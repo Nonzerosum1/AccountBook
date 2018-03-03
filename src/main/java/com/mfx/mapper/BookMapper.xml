@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.mfx.mapper.BookDao">
+    <insert id="insert" parameterType="Books">
+       insert into a_book(name,phoneNum,money,weight,type,date) values(#{name},#{phoneNum},#{money},#{weight},#{type},#{date});
+    </insert>
+    <insert id="insertIntoGiveDao" parameterType="GiveBooks">
+       insert into give_books(name,phoneNum,money,weight,type,giveTime) values(#{name},#{phoneNum},#{money},#{weight},#{type},#{giveTime});
+    </insert>
+    <select id="selectAllDao" resultType="Books">
+       select * from a_book
+    </select>
+    <select id="selectGiveBookDao" resultType="GiveBooks">
+       select * from give_books
+    </select>
+    <select id="selectByNameDao" resultType="Books">
+       select * from a_book where name=#{name}
+    </select>
+    <select id="selectByPhoneNumDao" resultType="Books">
+       select * from a_book where phoneNum=#{keyString}
+    </select>
+    <select id="selectByIdDao" resultType="Books">
+       select * from a_book where id=#{id}
+    </select>
+    <delete id="delete">
+      delete from a_book where id=#{id} 
+    </delete>
+    <update id="updateDao" parameterType="Books">
+       update a_book set name=#{name},phoneNum=#{phoneNum},money=#{money},weight=#{weight},type=#{type},date=#{date} where id=#{id}
+    </update>
+</mapper>
